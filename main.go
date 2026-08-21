@@ -31,9 +31,11 @@ func main() {
 			// e atualiza o proprio slice
 			numbers = addNumber(numbers, currentNumber)
 		}
+
 		if option == 2 {
 			listNumbers(numbers)
 		}
+
 		if option == 3 {
 			// le o indice a ser removido
 			var index int
@@ -42,16 +44,16 @@ func main() {
 
 			// faz a remocao do valor e atualiza o slice
 			numbers = removeNumber(numbers, index)
-
 		}
+
 		if option == 5 {
 			var a, b int
 			fmt.Println("Digite dois valores: ")
 			fmt.Scan(&a, &b)
 
 			fmt.Println(safeDivision(a, b))
-
 		}
+
 		if option == 6 {
 			numbers = clearList(numbers)
 		}
@@ -88,6 +90,10 @@ func removeNumber(list []int, index int) []int {
 
 	return list
 }
+
+// TODO: func minValue() {}
+// TODO: func maxValue() {}
+// TODO: func avg()      {}
 
 func safeDivision(a int, b int) (int, error) {
 	if b == 0 {
