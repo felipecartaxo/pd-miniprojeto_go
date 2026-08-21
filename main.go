@@ -8,19 +8,33 @@ func main() {
 
 	// slice de inteiros inicialmente vazio
 	// que iremos manipular
-	numbers := []int{1, 2, 3}
+	numbers := []int{}
 
 	// opcao informada pelo usuario
 	var option int
 
-	// exibe o menu principal
-	showMenu()
+	for {
+		// exibe o menu principal
+		showMenu()
 
-	// leitura da opcao do usuario
-	fmt.Scan(&option) // & atribui o valor lido a variavel
+		// leitura da opcao do usuario
+		fmt.Scan(&option) // & atribui o valor lido a variavel
 
-	if option == 2 {
-		listNumbers(numbers)
+		if option == 1 {
+
+			// le o numero a ser adicionado
+			var currentNumber int
+			fmt.Print("Digite o número que deseja adicionar: ")
+			fmt.Scan(&currentNumber)
+
+			numbers = addNumber(numbers, currentNumber)
+		}
+		if option == 2 {
+			listNumbers(numbers)
+		}
+		if option == 0 {
+			break
+		}
 	}
 }
 
@@ -36,6 +50,16 @@ func showMenu() {
 	fmt.Println("[0] Sair da aplicação")
 }
 
+func addNumber(list []int, num int) []int {
+	return append(list, num)
+}
+
 func listNumbers(list []int) {
 	fmt.Println("Números: ", list)
 }
+
+// func clearList(list []int) {
+// 	clear(list)
+
+// 	return list[]
+// }
