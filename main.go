@@ -32,6 +32,9 @@ func main() {
 		if option == 2 {
 			listNumbers(numbers)
 		}
+		if option == 6 {
+			numbers = clearList(numbers)
+		}
 		if option == 0 {
 			break
 		}
@@ -58,8 +61,8 @@ func listNumbers(list []int) {
 	fmt.Println("Números: ", list)
 }
 
-// func clearList(list []int) {
-// 	clear(list)
+func clearList(list []int) []int {
+	list = nil // remove todos os elementos do slice
 
-// 	return list[]
-// }
+	return list
+}
