@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 )
 
@@ -21,23 +22,34 @@ func main() {
 		fmt.Scan(&option) // & atribui o valor lido a variavel
 
 		if option == 1 {
-
 			// le o numero a ser adicionado
 			var currentNumber int
 			fmt.Print("Digite o número que deseja adicionar: ")
 			fmt.Scan(&currentNumber)
 
+			// adiciona o valor ao final do slice
+			// e atualiza o proprio slice
 			numbers = addNumber(numbers, currentNumber)
 		}
 		if option == 2 {
 			listNumbers(numbers)
 		}
 		if option == 3 {
+			// le o indice a ser removido
 			var index int
-			fmt.Print("Informe o índice do elemento que deseja remover")
+			fmt.Print("Informe o índice do elemento que deseja remover: ")
 			fmt.Scan(&index)
 
+			// faz a remocao do valor e atualiza o slice
 			numbers = removeNumber(numbers, index)
+
+		}
+		if option == 5 {
+			var a, b int
+			fmt.Println("Digite dois valores: ")
+			fmt.Scan(&a, &b)
+
+			fmt.Println(safeDivision(a, b))
 
 		}
 		if option == 6 {
@@ -75,6 +87,14 @@ func removeNumber(list []int, index int) []int {
 	list = append(list[:index], list[index+1:]...)
 
 	return list
+}
+
+func safeDivision(a int, b int) (int, error) {
+	if b == 0 {
+		return 0, errors.New("Divisão por zero")
+	}
+
+	return a / b, nil
 }
 
 func clearList(list []int) []int {
