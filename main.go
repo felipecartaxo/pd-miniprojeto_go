@@ -32,6 +32,14 @@ func main() {
 		if option == 2 {
 			listNumbers(numbers)
 		}
+		if option == 3 {
+			var index int
+			fmt.Print("Informe o índice do elemento que deseja remover")
+			fmt.Scan(&index)
+
+			numbers = removeNumber(numbers, index)
+
+		}
 		if option == 6 {
 			numbers = clearList(numbers)
 		}
@@ -59,6 +67,14 @@ func addNumber(list []int, num int) []int {
 
 func listNumbers(list []int) {
 	fmt.Println("Números: ", list)
+}
+
+func removeNumber(list []int, index int) []int {
+	// list[:index] = todos os elementos ate o indice
+	// list[index+1:] = todos os elementos do indice em diante
+	list = append(list[:index], list[index+1:]...)
+
+	return list
 }
 
 func clearList(list []int) []int {
