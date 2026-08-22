@@ -14,6 +14,7 @@ func main() {
 		showMenu()
 
 		fmt.Scan(&option)
+		fmt.Println()
 
 		if option == 1 {
 			var currentNumber int
@@ -48,7 +49,7 @@ func main() {
 
 		if option == 5 {
 			var a, b int
-			fmt.Println("Digite dois valores: ")
+			fmt.Print("Digite dois valores: ")
 			fmt.Scan(&a, &b)
 
 			result, err := safeDivision(a, b)
@@ -64,21 +65,30 @@ func main() {
 			numbers = clearList(numbers)
 		}
 
+		if option < 0 || option > 6 {
+			fmt.Println("Informe um valor valido")
+		}
+
 		if option == 0 {
+			fmt.Println("Saindo...")
+			fmt.Println()
+
 			break
 		}
 	}
 }
 
 func showMenu() {
-	fmt.Println("Digite um numero de 0 a 6: ")
+	fmt.Println("\n======================================")
 	fmt.Println("[1] Adicionar um numero")
 	fmt.Println("[2] Listar os numeros")
-	fmt.Println("[3] Remover um numero a partir do indice")
+	fmt.Println("[3] Remover numero a partir de um indice")
 	fmt.Println("[4] Exibir estatisticas")
 	fmt.Println("[5] Realizar divisao segura")
-	fmt.Println("[6] Resetar a lista")
+	fmt.Println("[6] Limpar a lista")
 	fmt.Println("[0] Sair da aplicacao")
+
+	fmt.Print("\nDigite um numero de 0 a 6: ")
 }
 
 func addNumber(list []int, num int) []int {
