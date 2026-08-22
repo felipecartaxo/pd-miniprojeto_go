@@ -46,6 +46,10 @@ func main() {
 			numbers = removeNumber(numbers, index)
 		}
 
+		if option == 4 {
+			showStatistics(numbers)
+		}
+
 		if option == 5 {
 			var a, b int
 			fmt.Println("Digite dois valores: ")
@@ -91,9 +95,60 @@ func removeNumber(list []int, index int) []int {
 	return list
 }
 
-// TODO: func minValue() {}
-// TODO: func maxValue() {}
-// TODO: func avg()      {}
+func showStatistics(numbers []int) {
+	fmt.Println("Menor valor: ", minValue(numbers))
+	fmt.Println("Maior valor: ", maxValue(numbers))
+	fmt.Println("Média: ", avg(numbers))
+}
+
+func minValue(list []int) int {
+	if len(list) == 0 {
+		return 0
+	}
+
+	var min int = list[0]
+
+	for i := 1; i < len(list); i++ {
+		if list[i] < min {
+			min = list[i]
+		}
+	}
+
+	return min
+}
+
+func maxValue(list []int) int {
+	if len(list) == 0 {
+		return 0
+	}
+
+	var max int = list[0]
+
+	for i := 1; i < len(list); i++ {
+		if list[i] > max {
+			max = list[i]
+		}
+	}
+
+	return max
+}
+
+func avg(list []int) int {
+
+	if len(list) == 0 {
+		return 0
+	}
+
+	var total int = list[0]
+
+	for i := 1; i < len(list); i++ {
+		total = total + list[i]
+	}
+
+	avg := total / len(list)
+
+	return avg
+}
 
 func safeDivision(a int, b int) (int, error) {
 	if b == 0 {
