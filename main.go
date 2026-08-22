@@ -6,28 +6,20 @@ import (
 )
 
 func main() {
-	// slice de inteiros inicialmente vazio
-	// que iremos manipular
 	numbers := []int{}
 
-	// opcao informada pelo usuario
 	var option int
 
 	for {
-		// exibe o menu principal
 		showMenu()
 
-		// leitura da opcao do usuario
 		fmt.Scan(&option)
 
 		if option == 1 {
-			// le o numero a ser adicionado
 			var currentNumber int
 			fmt.Print("Digite o numero que deseja adicionar: ")
 			fmt.Scan(&currentNumber)
 
-			// adiciona o valor ao final do slice
-			// e atualiza o proprio slice
 			numbers = addNumber(numbers, currentNumber)
 		}
 
@@ -36,12 +28,10 @@ func main() {
 		}
 
 		if option == 3 {
-			// le o indice a ser removido
 			var index int
 			fmt.Print("Informe o indice do elemento que deseja remover: ")
 			fmt.Scan(&index)
 
-			// faz a remocao do valor e atualiza o slice
 			var err error
 			numbers, err = removeNumber(numbers, index)
 			if err != nil {
